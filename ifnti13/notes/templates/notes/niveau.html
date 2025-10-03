@@ -1,0 +1,10 @@
+<h1>Niveau : {{ niveau.nom }}</h1>
+
+<h2>Liste des matières</h2>
+<ul>
+  {% for matiere in matieres %}
+    <li>{{ matiere.nom }}</li>
+  {% empty %}
+    <li>Aucune matière pour ce niveau.</li>
+  {% endfor %}
+</ul>

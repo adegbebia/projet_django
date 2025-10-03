@@ -1,0 +1,7 @@
+<h1>Détail de l'élève : {{ eleve.nom }}</h1>
+
+<p><strong>Prénom :</strong> {{ eleve.prenom }}</p>
+<p><strong>Matricule :</strong> {{ eleve.matricule }}</p>
+<p><strong>Niveau :</strong> {{ eleve.niveau }}</p>
+
+<a href="{% url 'eleves' %}">← Retour à la liste des élèves</a>

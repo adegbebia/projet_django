@@ -1,0 +1,7 @@
+<h1>Détail de la matière : {{ matiere.nom }}</h1>
+<p>Enseignant : {{ matiere.enseignant }}</p>
+<p>Code : {{ matiere.id }}</p>
+
+<!-- Ici on enlève le namespace 'notes:' -->
+<a href="{% url 'notes:matieres' %}">← Retour à la liste des matières</a>
+
