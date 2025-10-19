@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un enseignant</title>
+</head>
+<body>
+    <h1>Modifier l’enseignant {{ enseignant.nom }} {{ enseignant.prenom }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Mettre à jour</button>
+    </form>
+
+    <p><a href="{% url 'notes:enseignants' %}">← Retour à la liste des enseignants</a></p>
+</body>
+</html>

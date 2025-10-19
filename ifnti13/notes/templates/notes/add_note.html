@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Ajouter une note pour {{ eleve.prenom }} — {{ matiere.nom }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <a href="{% url 'notes:eleve_detail' eleve.id %}" class="btn btn-secondary">Retour</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from notes.models import Matiere
-
 # Liste de toutes les matières
 def matieres(request):
     toutes_les_matieres = Matiere.objects.all()

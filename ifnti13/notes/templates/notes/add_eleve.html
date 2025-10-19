@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un élève</title>
+</head>
+<body>
+    <h1>Ajouter un élève</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer</button>
+        <a href="{% url 'notes:eleves' %}">Annuler</a>
+    </form>
+</body>
+</html>

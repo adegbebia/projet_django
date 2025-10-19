@@ -1,7 +1,17 @@
-<h1>Détail de l'élève : {{ eleve.nom }}</h1>
+<h1>Détail de l'élève </h1>
 
 <p><strong>Prénom :</strong> {{ eleve.prenom }}</p>
 <p><strong>Matricule :</strong> {{ eleve.matricule }}</p>
-<p><strong>Niveau :</strong> {{ eleve.niveau }}</p>
+<p><strong>Niveau :</strong> {{ eleve.niveau.nom }}</p>
 
-<a href="{% url 'eleves' %}">← Retour à la liste des élèves</a>
+<h2>Matières du niveau {{ eleve.niveau.nom }}</h2>
+{% for m in matieres %}
+    <p>
+        {{ m.nom }}
+        <a href="{% url 'notes:add_note' eleve.id m.id %}">Ajouter note</a>
+    </p>
+{% empty %}
+    <p>Aucune matière trouvée pour ce niveau.</p>
+{% endfor %}
+
+<a href="{% url 'notes:eleves' %}">← Retour à la liste des élèves</a>

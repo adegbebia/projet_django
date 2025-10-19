@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques Générales</title>
+</head>
+
+<body>
+
+    <h1>Statistiques du système de gestion des notes</h1>
+
+
+    <section>
+        <h2>Statistiques globales</h2>
+        <ul>
+            <li>Total élèves : {{ total_eleves }}</li>
+            <li>Total enseignants : {{ total_enseignants }}</li>
+            <li>Total matières : {{ total_matieres }}</li>
+            <li>Total notes : {{ total_notes }}</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Moyenne par matière</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Matière</th>
+                    <th>Moyenne</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in moyennes_matieres %}
+                <tr>
+                    <td>{{ m.nom }}</td>
+                    <td>{{ m.moyenne|floatformat:2 }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2">Aucune matière trouvée</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Moyenne par élève</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Moyenne</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in moyennes_eleves %}
+                <tr>
+                    <td>{{ e.nom }}</td>
+                    <td>{{ e.prenom }}</td>
+                    <td>{{ e.moyenne|floatformat:2 }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">Aucun élève trouvé</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
+        <h2>Top 5 des meilleurs élèves</h2>
+        <ol>
+            {% for t in top_eleves %}
+            <li>{{ t.prenom }} {{ t.nom }} — {{ t.moyenne|floatformat:2 }}</li>
+            {% empty %}
+            <li>Aucun élève trouvé.</li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    <section>
+        <h2>Statistiques par niveau</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Niveau</th>
+                    <th>Nombre d'élèves</th>
+                    <th>Moyenne du niveau</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in stats_niveaux %}
+                <tr>
+                    <td>
+                        {% if n.id %}
+                        <a href="{% url 'statistiques_niveau' n.id %}">{{ n.nom }}</a>
+                        {% else %}
+                        {{ n.nom }}
+                        {% endif %}
+                    </td>
+                    <td>{{ n.nombre_eleves }}</td>
+                    <td>{{ n.moyenne_niveau|floatformat:2 }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">Aucun niveau trouvé</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+</body>
+            

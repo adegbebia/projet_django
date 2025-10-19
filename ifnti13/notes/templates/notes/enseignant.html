@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des enseignants</title>
+</head>
+<body>
+    <h1>Liste des enseignants</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Sexe</th>
+                <th>Date de naissance</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in enseignants %}
+            <tr>
+                <td>{{ e.nom }}</td>
+                <td>{{ e.prenom }}</td>
+                <td>{{ e.sexe }}</td>
+                <td>{{ e.date }}</td>
+                <td>
+                    <a href="{% url 'notes:update_enseignant' e.id %}">Modifier</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Aucun enseignant trouvé.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><a href="{% url 'notes:add_enseignant' %}">Ajouter un enseignant</a></p>
+</body>
+</html>

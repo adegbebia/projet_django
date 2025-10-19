@@ -1,1 +1,21 @@
-<h1>Bonjour tout le monde !</h1>.
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - Gestion des notes</title>
+</head>
+<body>
+    <h1>Bienvenue sur la plateforme de gestion des notes IFNTI</h1>
+    <p>Choisissez une section pour commencer :</p>
+
+    <ul>
+        <li><a href="{% url 'notes:eleves' %}">Gérer les élèves</a></li>
+        <li><a href="{% url 'notes:enseignants' %}">Gérer les enseignants</a></li>
+        <li><a href="{% url 'notes:matieres' %}">Gérer les matières</a></li>
+    
+    </ul>
+
+    <hr>
+    <p>© 2025 - IFNTI | Projet Django</p>
+</body>
+</html>
