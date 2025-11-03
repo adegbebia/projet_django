@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connexion - IFNTI</title>
+</head>
+<body>
+    <h2>Connexion IFNTI</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <p>
+            <label>Nom d'utilisateur :</label><br>
+            <input type="text" name="username" required>
+        </p>
+        
+        <p>
+            <label>Mot de passe :</label><br>
+            <input type="password" name="password" required>
+        </p>
+        
+        <button type="submit">Se connecter</button>
+    </form>
+    
+    {% if form.errors %}
+    <p><strong>Erreur :</strong> Nom d'utilisateur ou mot de passe incorrect.</p>
+    {% endif %}
+    
+    <p>Mot de passe temporaire : ifnti2023</p>
+</body>
+</html>

@@ -1,6 +1,9 @@
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 from notes.forms.Eleveform import EleveForm
 
+@login_required
+@permission_required('notes.add_eleve', raise_exception=True)
 def add_eleve(request):
     if request.method == 'POST':
         form = EleveForm(request.POST)
