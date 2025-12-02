@@ -1,13 +1,18 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from notes.views import index, eleve, matiere, niveau, statistique, note, enseignant
-from notes.views import add_eleve, update_eleve, add_enseignant, update_enseignant
+from notes.views import add_eleve, update_eleve, add_enseignant, update_enseignant,jpl
 
 app_name = "notes"
 
 urlpatterns = [
+   
+
     # Page d'accueil
     path('', index.index, name='index'),
+    
+    #jpl
+    path("jpl", jpl.jpl_view, name="jpl"),
 
     # URLs d'authentification
     path('accounts/login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),

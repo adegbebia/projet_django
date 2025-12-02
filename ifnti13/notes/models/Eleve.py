@@ -7,7 +7,7 @@ class Eleve(Personne):
     matricule = models.CharField(max_length=100, blank=True)
     niveau = models.ForeignKey(Niveau, on_delete=models.CASCADE)
     
-    # Champ ManyToMany pour les matières
+    
     matieres = models.ManyToManyField(
         Matiere,
         blank=True,

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Eleve, Niveau, Matiere, Note
+from .models import Eleve, Niveau, Matiere, Note, Enseignant
 from .forms.Eleveform import EleveForm
 
 
@@ -8,13 +8,13 @@ class EleveAdmin(admin.ModelAdmin):
     form = EleveForm
 
     # Liste et apparence
-    list_display = ('nom', 'prenom', 'sexe', 'niveau', 'date')
+    list_display = ('nom', 'prenom', 'sexe', 'niveau', 'date', 'user')
     list_display_links = ('nom', 'prenom')
     list_editable = ('niveau',)
 
     # Filtres et recherche
-    list_filter = ('niveau', 'sexe')
-    search_fields = ('nom', 'prenom')
+    list_filter = ('niveau', 'sexe', 'user')
+    search_fields = ('nom', 'prenom', 'user__username')
     date_hierarchy = 'date'
 
     # Options générales
@@ -24,11 +24,11 @@ class EleveAdmin(admin.ModelAdmin):
     save_as = True
 
     # Champs du formulaire
-    fields = ('nom', 'prenom', 'sexe', 'niveau', 'date')
-   
+    fields = ('nom', 'prenom', 'sexe', 'niveau', 'date', 'user')
 
-     # Pour les relations
-    raw_id_fields = ('niveau',)
+    # Pour les relations (affichage compact du sélecteur)
+    raw_id_fields = ('niveau', 'user')
+
 
 
 # Autres modèles sans personnalisation particulière
@@ -42,4 +42,8 @@ class MatiereAdmin(admin.ModelAdmin):
 
 @admin.register(Note)
 class NoteAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Enseignant)
+class EnseignantAdmin(admin.ModelAdmin):
     pass
