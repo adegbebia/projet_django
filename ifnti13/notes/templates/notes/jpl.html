@@ -1,4 +1,6 @@
 {% load static %}
+{% load django_browser_reload %}
+{% load static tailwind_tags %}
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -7,8 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bonjour</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+    {% tailwind_css %}
 </head>
 <body>
-    <h1 class="title">Bienvenue sur la page d'utilisation des fichiers statiques</h1>
+    <h1 class="bg-blue-500 text-red-500">Bienvenue sur  la page d'utilisation des fichiers statiques</h1>
+    {% django_browser_reload_script %}
 </body>
 </html>

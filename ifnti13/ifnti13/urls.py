@@ -25,6 +25,9 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='notes/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('notes/', include('notes.urls')),
+    path('api/', include('api.urls')),
+
+    path("__reload__/", include("django_browser_reload.urls")),
     
 ]
 
